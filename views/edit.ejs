@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head')%>
+  <body>
+    <div class="container">
+      <div class="row general-form-div">
+        <a class="col-12 col-md-12 a-img"  href="http://localhost:3000"><img src="/images/logo.png" alt=""></a>
+        <h1 class="title-2 col-12">Edit the following operation</h1>
+          <form class="col-12" method="POST" action="/edit/<%= operation.id %>?_method=PUT">
+            <div class="col-12 div-form">
+              <label class="label col-12" name="amount" for="amount">Amount
+              <i class="fas fa-dollar-sign"></i> <input class="input" name="amount" type="number" value="<%= operation.amount %>" required></label>
+              <label name="description" class="label col-12" for="category">Description
+              <input name="description" class="input" type="text" value="<%= operation.description %>" required></label>
+              <label class="label col-12" name="date" for="date">Date
+              <input class="input" name="date" type="date" required></label>
+              <div class="btn-div col-12 col-md-6">
+                <button class="add-btn col-7 col-md-6" type="submit">Edit</button>
+                <input type="button" class="add-btn col-7 col-md-6" onclick="history.back()" value="Home">
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </body>
+  <%- include('./partials/footer')%>
+</html>

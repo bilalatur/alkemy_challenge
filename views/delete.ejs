@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head')%>
+  <body class="body col-12">
+    <div class="container">
+      <div class="row general-div">
+        <div class="container">
+          <div class="row logo">
+            <a class="col-8 col-md-3"  href="http://localhost:3000"><img class="col-12 img-logo" src="/images/logo.png" alt=""></a>
+          </div>
+        </div>
+        <h1 class="title-2 col-12">¿Do you want to delete the following operation?</h1>
+        <form class="col-12" action="/delete/<%=operation.id%>?_method=PUT" method="POST">
+          <div class="col-12 div-form">
+            <p class="col-12">Date: <%= operation.date %> </p>
+            <p class="col-12">Type: <%= operation.type %> </p>
+            <p class="col-12">Description: <%= operation.description %> </p>
+            <p class="col-12">Amount: $<%= formatPrice(operation.amount) %> </p>
+          <div class="btn-div col-12 col-md-6">
+            <button class="add-btn col-7 col-md-6" type="submit">Delete</button>
+            <input type="button" class="add-btn col-7 col-md-6" onclick="history.back()" value="Home">
+          </div>
+          </div>
+        </form>
+    </div> 
+  </div>
+  </body>
+  <%- include('./partials/footer')%>
+</html>

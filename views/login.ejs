@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/head')%>
+    <body>
+        <div class="row logo">
+            <a class="col-8 col-md-3"  href="http://localhost:3000"><img class="col-12 img-logo" src="/images/logo.png" alt=""></a>
+        </div>
+        <h1 class="title col-12">Welcome to Bazinga! <br> Where managing your expenses is a piece of cake</h1>
+        <h3 class="title col-12"><b>Login</b></h3>
+        <div class="container">
+            <div class="row user-form">
+                <form action="/user/login" method="POST">
+                    <label class="label col-12" for="email" name="email">Email
+                    <input class="input" name="email" type="email" required></label>
+                    <label class="label col-6" for="password" name="password">Password
+                    <input class="input" name="password" type="password" required></label>
+                    <label class="label col-12" for="remeber" name="remeber">Keep me logued
+                    <input type="checkbox" value="remeber" name="remember" checked><br> 
+                    <button class="add-btn col-7 col-md-6 user-btn" type="submit">Login</button>
+                    <input type="button" class="add-btn col-7 col-md-6 user-btn" onclick="history.back()" value="Home">
+                </form>
+            </div>
+        </div>
+    </body>
+    <%- include('./partials/footer')%>
+</html>

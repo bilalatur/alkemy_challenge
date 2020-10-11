@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head')%>
+  <body class="body col-12">
+    <div class="container">
+      <div class="row general-div">
+        <div class="container">
+          <div class="row logo">
+            <a class="col-8 col-md-3"  href="http://localhost:3000"><img class="col-12 img-logo" src="/images/logo.png" alt=""></a>
+          </div>
+        </div>
+        <% if (user == undefined) { %>
+          <h1 class="col-12 title-guest">Register/Login to start managing your expenses</h1>
+          <a href="http://localhost:3000/user/login" class="user-btn user-btn-home">Login</a>
+          <a href="http://localhost:3000/user/register" class="user-btn user-btn-home">Register</a>
+        <% } else { %>
+            <p class="user-type col-12"> Usuario logueado con el mail: <%= user.email %>  </p>
+            <a href="http://localhost:3000/user/logout" class="user-btn user-btn-home">Logout</a>
+        <div class="container">
+          <div class="row head-div">
+            <% if (balance < 0) { %>
+              <h2 class="balance-neg">Balance: $ <%=formatPrice(balance)%> </h2>
+            <% } else { %>
+              <h2 class="balance-pos">Balance: $ <%=formatPrice(balance)%>%> </h2>
+            <% } %>            
+            <a href="http://localhost:3000/form"><i class="fas fa-plus"></i></a>
+          </div>
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="operation col-12">
+            <p class="col-4 col-md-2 operation-line-center title-table">Date</p>
+            <p class="col-5 col-md-4 operation-line-center title-table">Description</p>
+            <p class="col-3 col-md-2 operation-line-center title-table">Amount</p>  
+            <p class="col-6 col-md-2 operation-line-center p-table-btn"></p>
+            <p class="col-6 col-md-2 operation-line-center p-table-btn"></p>
+          </div>
+          <% operations.forEach(operation => { %>
+            <div class="operation col-12">
+              <p class="col-4 col-md-2 operation-line-center"><%= operation.date %></p>
+              <p class="col-5 col-md-4 operation-line-center"><%= operation.description %></p>
+              <% if (operation.type === "Outcome") { %>
+              <p class="col-3 col-md-2 operation-line-center amount-neg">$ -<%= formatPrice(operation.amount) %></p>
+              <% } else { %>
+              <p class="col-3 col-md-2 operation-line-center amount-pos">$<%= formatPrice(operation.amount) %></p>
+              <% } %>
+              <a class="a-btn" href="http://localhost:3000/delete/<%= operation.id %>"><p class="col-6 col-md-2 operation-line-center p-table-btn"><button class="table-btn delete-btn">Delete</button></p></a>
+              <a class="a-btn" href="http://localhost:3000/edit/<%= operation.id %>"><p class="col-6 col-md-2 operation-line-center p-table-btn"><button class="table-btn delete-btn">Edit</button></p></a>
+            </div>
+          <% }) %>
+          <% } %> 
+        </div>
+    </div> 
+  </div>
+  </body>
+  <%- include('./partials/footer') %>
+</html>
